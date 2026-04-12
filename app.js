@@ -11,23 +11,28 @@ async function loadMedia() {
 }
 
 function renderGrids() {
-    const grid1 = document.getElementById('grid1');
-    const grid2 = document.getElementById('grid2');
-    const grid3 = document.getElementById('grid3');
+    const main = document.querySelector('main');
+    main.innerHTML = '';
 
-    grid1.innerHTML = '';
-    grid2.innerHTML = '';
-    grid3.innerHTML = '';
+    const sectionCount = Math.ceil(mediaData.length / 5);
+
+    for (let s = 0; s < sectionCount; s++) {
+        const section = document.createElement('section');
+        section.id = `section${s + 1}`;
+
+        const grid = document.createElement('div');
+        grid.className = 'media-grid';
+        grid.id = `grid${s + 1}`;
+
+        section.appendChild(grid);
+        main.appendChild(section);
+    }
 
     mediaData.forEach((media, index) => {
+        const sectionIndex = Math.floor(index / 5);
+        const grid = document.getElementById(`grid${sectionIndex + 1}`);
         const item = createMediaItem(media, index);
-        if (media.id <= 5) {
-            grid1.appendChild(item);
-        } else if (media.id <= 10) {
-            grid2.appendChild(item);
-        } else {
-            grid3.appendChild(item);
-        }
+        grid.appendChild(item);
     });
 }
 
