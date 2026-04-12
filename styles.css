@@ -129,7 +129,7 @@ section {
 }
 
 .media-item {
-    width: 33.333%;
+    width: 30%;
     aspect-ratio: 5 / 4;
     background-color: #141414;
     border-radius: 0;
