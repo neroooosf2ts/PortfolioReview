@@ -5,7 +5,7 @@
 }
 
 html, body {
-    background-color: #000000;
+    background-color: #242424;
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100%;
@@ -14,46 +14,103 @@ html, body {
 
 header {
     width: 100%;
-    background-color: #000000;
-    padding: 40px 20px;
-    border-bottom: 3px solid #00ff00;
+    background-color: #242424;
+    padding: 20px 40px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
-    overflow: hidden;
-    min-height: 200px;
 }
 
-.header-bg {
-    position: absolute;
-    top: 0;
+.site-logo {
+    height: 50px;
+    width: auto;
+}
+
+nav a.nav-contact {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+nav a.nav-contact:hover {
+    opacity: 1;
+}
+
+/* Contact Modal */
+.contact-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    opacity: 0.4;
-    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
 }
 
-.title {
-    font-family: 'Cinzel', serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 4px;
-    background: linear-gradient(135deg, #00ff00, #00cc00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.contact-modal-content {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
     position: relative;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: slideUp 0.3s ease;
+}
+
+.contact-modal-content p {
+    color: #cccccc;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.contact-email {
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 1rem !important;
+}
+
+.twitter-link {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.twitter-link:hover {
+    opacity: 1;
+}
+
+.contact-close {
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.contact-close:hover {
+    opacity: 1;
 }
 
 main {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0;
-    background-color: #000000;
+    background-color: #242424;
 }
 
 section {
@@ -82,7 +139,7 @@ section {
 .media-item:hover {
     transform: scale(1.15);
     filter: brightness(0.7);
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
     z-index: 10;
 }
 
@@ -111,7 +168,7 @@ section {
 }
 
 .media-item-title {
-    color: #00ff00;
+    color: #ffffff;
     font-weight: 600;
     font-size: 1rem;
 }
@@ -157,14 +214,14 @@ section {
     right: 20px;
     top: 20px;
     font-size: 28px;
-    color: #00ff00;
+    color: #ffffff;
     cursor: pointer;
     background: none;
     border: none;
 }
 
 .close:hover {
-    color: #00cc00;
+    opacity: 0.7;
 }
 
 #modal-body {
@@ -184,7 +241,7 @@ section {
 }
 
 #modal-body h2 {
-    color: #00ff00;
+    color: #ffffff;
     font-size: 1.8rem;
 }
 
@@ -199,10 +256,8 @@ section {
 
 @media (max-width: 768px) {
     .media-item { width: 33.333%; }
-    .title { font-size: 1.8rem; }
 }
 
 @media (max-width: 480px) {
     .media-item { width: 50%; }
-    .title { font-size: 1.3rem; }
 }
