@@ -13,16 +13,20 @@ async function loadMedia() {
 function renderGrids() {
     const grid1 = document.getElementById('grid1');
     const grid2 = document.getElementById('grid2');
+    const grid3 = document.getElementById('grid3');
 
     grid1.innerHTML = '';
     grid2.innerHTML = '';
+    grid3.innerHTML = '';
 
     mediaData.forEach((media, index) => {
         const item = createMediaItem(media, index);
         if (media.id <= 5) {
             grid1.appendChild(item);
-        } else {
+        } else if (media.id <= 10) {
             grid2.appendChild(item);
+        } else {
+            grid3.appendChild(item);
         }
     });
 }
