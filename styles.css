@@ -5,7 +5,6 @@
 }
 
 html {
-    background-color: #141414;
     zoom: 0.9;
 }
 
@@ -129,21 +128,19 @@ section {
 }
 
 .media-item {
-    width: 15%;
+    width: 25%;
     aspect-ratio: 5 / 4;
     background-color: #141414;
     border-radius: 0;
-    overflow: visible;
+    overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    transition: filter 0.3s ease;
     z-index: 0;
     position: relative;
 }
 
 .media-item:hover {
-    transform: scale(1.15);
-    filter: brightness(0.7);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    filter: brightness(0.5);
     z-index: 10;
 }
 
@@ -158,10 +155,14 @@ section {
 
 .media-item-label {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 15px;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -175,12 +176,14 @@ section {
     color: #ffffff;
     font-weight: 600;
     font-size: 1rem;
+    text-align: center;
 }
 
 .media-item-duration {
-    color: #888888;
+    color: #aaaaaa;
     font-size: 0.85rem;
     margin-top: 5px;
+    text-align: center;
 }
 
 .modal {
