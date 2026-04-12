@@ -13,7 +13,7 @@ async function loadMedia() {
 function renderGrids() {
     const grid1 = document.getElementById('grid1');
     const grid2 = document.getElementById('grid2');
-    
+
     grid1.innerHTML = '';
     grid2.innerHTML = '';
 
