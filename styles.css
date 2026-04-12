@@ -58,6 +58,12 @@ nav a.nav-contact:hover {
     align-items: center;
 }
 
+.contact-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
 .contact-modal-content {
     background-color: #1a1a1a;
     padding: 40px;
