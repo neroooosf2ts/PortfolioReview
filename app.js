@@ -14,7 +14,7 @@ function renderGrids() {
     const main = document.querySelector('main');
     main.innerHTML = '';
 
-    const sectionCount = Math.ceil(mediaData.length / 5);
+    const sectionCount = Math.ceil(mediaData.length / 3);
 
     for (let s = 0; s < sectionCount; s++) {
         const section = document.createElement('section');
@@ -29,7 +29,7 @@ function renderGrids() {
     }
 
     mediaData.forEach((media, index) => {
-        const sectionIndex = Math.floor(index / 5);
+        const sectionIndex = Math.floor(index / 3);
         const grid = document.getElementById(`grid${sectionIndex + 1}`);
         const item = createMediaItem(media, index);
         grid.appendChild(item);
