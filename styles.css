@@ -61,14 +61,14 @@ section {
 }
 
 .media-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0;
 }
 
 .media-item {
-    position: relative;
-    width: 100%;
+    width: 20%;
     aspect-ratio: 1 / 1;
     background-color: #1a1a1a;
     border-radius: 0;
@@ -76,6 +76,7 @@ section {
     cursor: pointer;
     transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
     z-index: 0;
+    position: relative;
 }
 
 .media-item:hover {
@@ -193,15 +194,15 @@ section {
 }
 
 @media (max-width: 1024px) {
-    .media-grid { grid-template-columns: repeat(4, 1fr); }
+    .media-item { width: 25%; }
 }
 
 @media (max-width: 768px) {
-    .media-grid { grid-template-columns: repeat(3, 1fr); }
+    .media-item { width: 33.333%; }
     .title { font-size: 1.8rem; }
 }
 
 @media (max-width: 480px) {
-    .media-grid { grid-template-columns: repeat(2, 1fr); }
+    .media-item { width: 50%; }
     .title { font-size: 1.3rem; }
 }
