@@ -133,7 +133,7 @@ section {
     background-color: #141414;
     border-radius: 0;
     overflow: hidden;
-    cursor: pointer;
+    cursor: default;
     transition: filter 0.3s ease;
     z-index: 0;
     position: relative;
