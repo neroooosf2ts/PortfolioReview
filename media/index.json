@@ -1,0 +1,65 @@
+[  
+  {  
+    "id": 1,  
+    "title": "Project One",  
+    "type": "video",  
+    "file": "media/project-one/demo.mp4",  
+    "duration": "2:30",  
+    "description": "This is the first project. Add your description here.",  
+    "links": [  
+      {  
+        "label": "View on GitHub",  
+        "type": "github",  
+        "url": "https://github.com"  
+      }  
+    ]  
+  },  
+  {  
+    "id": 2,  
+    "title": "Animation Demo",  
+    "type": "gif",  
+    "file": "media/animation-demo/anim.gif",  
+    "duration": "3:00",  
+    "description": "Check out this smooth animation!",  
+    "links": [  
+      {  
+        "label": "YouTube",  
+        "type": "youtube",  
+        "url": "https://youtube.com"  
+      }  
+    ]  
+  },  
+  {  
+    "id": 3,  
+    "title": "Design Showcase",  
+    "type": "image",  
+    "file": "media/design/screenshot.png",  
+    "duration": "N/A",  
+    "description": "A beautiful design mockup.",  
+    "links": []  
+  },  
+  {  
+    "id": 4,  
+    "title": "Project Four",  
+    "type": "video",  
+    "file": "media/project-four/video.mp4",  
+    "duration": "1:45",  
+    "description": "Another great project to showcase.",  
+    "links": [  
+      {  
+        "label": "Live Demo",  
+        "type": "link",  
+        "url": "https://example.com"  
+      }  
+    ]  
+  },  
+  {  
+    "id": 5,  
+    "title": "Project Five",  
+    "type": "gif",  
+    "file": "media/project-five/animation.gif",  
+    "duration": "2:15",  
+    "description": "Final project in the first section.",  
+    "links": []  
+  }  
+]
