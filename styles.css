@@ -40,7 +40,6 @@ nav a.nav-contact:hover {
     opacity: 1;
 }
 
-/* Contact Modal */
 .contact-modal {
     display: none;
     position: fixed;
@@ -125,8 +124,8 @@ section {
 }
 
 .media-item {
-    width: 20%;
-    aspect-ratio: 1 / 1;
+    width: 33.333%;
+    aspect-ratio: 2 / 1;
     background-color: #1a1a1a;
     border-radius: 0;
     overflow: visible;
@@ -250,14 +249,10 @@ section {
     line-height: 1.6;
 }
 
-@media (max-width: 1024px) {
-    .media-item { width: 25%; }
-}
-
 @media (max-width: 768px) {
-    .media-item { width: 33.333%; }
+    .media-item { width: 50%; }
 }
 
 @media (max-width: 480px) {
-    .media-item { width: 50%; }
+    .media-item { width: 100%; }
 }
