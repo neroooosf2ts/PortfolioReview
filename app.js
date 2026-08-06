@@ -1,55 +1,70 @@
-let mediaData = [];
+let gameData = [];
+let personalData = [];
 
-async function loadMedia() {
+async function loadData() {
     try {
-        const response = await fetch('media/index.json');
-        mediaData = await response.json();
-        renderGrids();
+        const [gameRes, linksRes] = await Promise.all([
+            fetch('media/index.json'),
+            fetch('media/links.json')
+        ]);
+        gameData = await gameRes.json();
+        personalData = await linksRes.json();
+        renderPage();
     } catch (error) {
         console.error('Error loading media:', error);
     }
 }
 
-function renderGrids() {
+function renderPage() {
     const main = document.querySelector('main');
     main.innerHTML = '';
 
-    const sectionCount = Math.ceil(mediaData.length / 3);
-
-    for (let s = 0; s < sectionCount; s++) {
-        const section = document.createElement('section');
-        section.id = `section${s + 1}`;
-
-        const grid = document.createElement('div');
-        grid.className = 'media-grid';
-        grid.id = `grid${s + 1}`;
-
-        section.appendChild(grid);
-        main.appendChild(section);
-    }
-
-    mediaData.forEach((media, index) => {
-        const sectionIndex = Math.floor(index / 3);
-        const grid = document.getElementById(`grid${sectionIndex + 1}`);
-        const item = createMediaItem(media, index);
-        grid.appendChild(item);
-    });
+    main.appendChild(buildSection('Game Commissions', 'gameGrid', gameData));
+    main.appendChild(buildSection('Personal Work', 'personalGrid', personalData));
 }
 
-function createMediaItem(media, index) {
+function buildSection(title, gridId, data) {
+    const section = document.createElement('section');
+    section.id = gridId + 'Section';
+
+    const heading = document.createElement('h2');
+    heading.className = 'section-title';
+    heading.textContent = title;
+    section.appendChild(heading);
+
+    const grid = document.createElement('div');
+    grid.className = 'media-grid';
+    grid.id = gridId;
+    section.appendChild(grid);
+
+    data.forEach((media) => {
+        grid.appendChild(createMediaItem(media));
+    });
+
+    return section;
+}
+
+function mediaMarkup(media, { interactive } = { interactive: false }) {
+    if (media.type === 'video') {
+        const controls = interactive ? 'controls' : '';
+        const autoplay = interactive ? 'autoplay' : 'autoplay muted loop';
+        return `<video ${controls} ${autoplay}><source src="${media.file}" type="video/mp4"></video>`;
+    } else if (media.type === 'image' || media.type === 'gif') {
+        return `<img src="${media.file}" alt="${media.title}">`;
+    } else if (media.type === 'embed') {
+        const pointerEvents = interactive ? '' : 'style="pointer-events:none;"';
+        return `<iframe src="${media.embedUrl}" ${pointerEvents} frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`;
+    }
+    return '';
+}
+
+function createMediaItem(media) {
     const item = document.createElement('div');
     item.className = 'media-item';
-    item.onclick = () => openModal(index);
-
-    let mediaHTML = '';
-    if (media.type === 'video') {
-        mediaHTML = `<video autoplay muted loop><source src="${media.file}" type="video/mp4"></video>`;
-    } else if (media.type === 'image' || media.type === 'gif') {
-        mediaHTML = `<img src="${media.file}" alt="${media.title}">`;
-    }
+    item.onclick = () => openModal(media);
 
     item.innerHTML = `
-        ${mediaHTML}
+        ${mediaMarkup(media, { interactive: false })}
         <div class="media-item-label">
             <div class="media-item-title">${media.title}</div>
             <div class="media-item-duration">${media.duration}</div>
@@ -59,23 +74,21 @@ function createMediaItem(media, index) {
     return item;
 }
 
-function openModal(index) {
-    const media = mediaData[index];
+function openModal(media) {
     const modal = document.getElementById('modal');
     const modalMedia = document.getElementById('modal-media');
     const modalInfo = document.getElementById('modal-info');
 
-    let mediaHTML = '';
-    if (media.type === 'video') {
-        mediaHTML = `<video controls autoplay><source src="${media.file}" type="video/mp4"></video>`;
-    } else if (media.type === 'image' || media.type === 'gif') {
-        mediaHTML = `<img src="${media.file}" alt="${media.title}">`;
-    }
+    modalMedia.innerHTML = mediaMarkup(media, { interactive: true });
 
-    modalMedia.innerHTML = mediaHTML;
+    const linkHTML = media.link
+        ? `<p><a href="${media.link}" target="_blank" class="modal-external-link">View original ↗</a></p>`
+        : '';
+
     modalInfo.innerHTML = `
         <h2>${media.title}</h2>
         <p>${media.description}</p>
+        ${linkHTML}
     `;
 
     modal.style.display = 'flex';
@@ -109,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    loadMedia();
+    loadData();
 });
 
 document.addEventListener('keydown', (e) => {
