@@ -52,8 +52,12 @@ function mediaMarkup(media, { interactive } = { interactive: false }) {
     } else if (media.type === 'image' || media.type === 'gif') {
         return `<img src="${media.file}" alt="${media.title}">`;
     } else if (media.type === 'embed') {
-        const pointerEvents = interactive ? '' : 'style="pointer-events:none;"';
-        return `<iframe src="${media.embedUrl}" ${pointerEvents} frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`;
+        // In the grid, use the thumbnail image
+        if (!interactive && media.thumbnail) {
+            return `<img src="${media.thumbnail}" alt="${media.title}" style="object-fit: cover;">`;
+        }
+        // In the modal, load the live interactive iframe
+        return `<iframe src="${media.embedUrl}" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`;
     }
     return '';
 }
@@ -62,6 +66,10 @@ function createMediaItem(media) {
     const item = document.createElement('div');
     item.className = 'media-item';
     item.onclick = () => openModal(media);
+
+    if (media.previewAspect) {
+        item.style.aspectRatio = media.previewAspect;
+    }
 
     item.innerHTML = `
         ${mediaMarkup(media, { interactive: false })}
@@ -78,8 +86,20 @@ function openModal(media) {
     const modal = document.getElementById('modal');
     const modalMedia = document.getElementById('modal-media');
     const modalInfo = document.getElementById('modal-info');
+    const modalInner = modal.querySelector('.modal-inner');
 
     modalMedia.innerHTML = mediaMarkup(media, { interactive: true });
+
+    const modalEl = modalMedia.querySelector('video, iframe, img');
+    if (modalEl) {
+        modalEl.style.aspectRatio = media.modalAspect || '';
+    }
+
+    if (media.modalAspect === '9 / 16' || media.modalAspect === '9/16' || (media.embedUrl && media.embedUrl.includes('tiktok.com'))) {
+        modalInner.classList.add('tiktok-active');
+    } else {
+        modalInner.classList.remove('tiktok-active');
+    }
 
     const linkHTML = media.link
         ? `<p><a href="${media.link}" target="_blank" class="modal-external-link">View original ↗</a></p>`
@@ -98,6 +118,8 @@ function closeModal() {
     const modal = document.getElementById('modal');
     modal.style.display = 'none';
     document.getElementById('modal-media').innerHTML = '';
+    const modalInner = modal.querySelector('.modal-inner');
+    if (modalInner) modalInner.classList.remove('tiktok-active');
 }
 
 document.addEventListener('DOMContentLoaded', () => {

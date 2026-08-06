@@ -1,11 +1,57 @@
 [
   {
-    "id": 1,
-    "title": "Example Personal Piece",
+    "title": "Split dance remake [TIKTOK]",
+    "description": "A remake.",
+    "duration": "",
     "type": "embed",
-    "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "duration": "Personal Project",
-    "description": "Replace this entry with your own personal work."
+    "thumbnail": "media/tiktok1.png",
+    "embedUrl": "https://www.tiktok.com/embed/v2/7617539300267216148",
+    "link": "https://www.tiktok.com/@nerosftt/video/7617539300267216148",
+    "previewAspect": "5 / 4",
+    "modalAspect": "9 / 16"
+  },
+  {
+    "title": "Botler vs regular criminal [TIKTOK]",
+    "description": "Personal work.",
+    "duration": "",
+    "type": "embed",
+    "thumbnail": "media/tiktok2.png",
+    "embedUrl": "https://www.tiktok.com/embed/v2/7601541328316452117",
+    "link": "https://www.tiktok.com/@nerosftt/video/7601541328316452117",
+    "previewAspect": "5 / 4",
+    "modalAspect": "9 / 16"
+  },
+  {
+    "title": "KatenAlieeBoxing [TIKTOK]",
+    "description": "Personal work.",
+    "duration": "",
+    "type": "embed",
+    "thumbnail": "media/tiktok3.png",
+    "embedUrl": "https://www.tiktok.com/embed/v2/7591930523560250644",
+    "link": "https://www.tiktok.com/@nerosftt/video/7591930523560250644",
+    "previewAspect": "5 / 4",
+    "modalAspect": "9 / 16"
+  },
+  {
+    "title": "Otsukare summer dance [TIKTOK]",
+    "description": "A remake.",
+    "duration": "",
+    "type": "embed",
+    "thumbnail": "media/tiktok4.png",
+    "embedUrl": "https://www.tiktok.com/embed/v2/7550711210426092808",
+    "link": "https://www.tiktok.com/@nerosftt/video/7550711210426092808",
+    "previewAspect": "5 / 4",
+    "modalAspect": "9 / 16"
+  },
+  {
+    "title": "Fireball Charming but my ocs [TIKTOK]",
+    "description": "Personal work with audio used from fireball charming.",
+    "duration": "",
+    "type": "embed",
+    "thumbnail": "media/tiktok5.png",
+    "embedUrl": "https://www.tiktok.com/embed/v2/7530283678174416145",
+    "link": "https://www.tiktok.com/@nerosftt/video/7530283678174416145",
+    "previewAspect": "5 / 4",
+    "modalAspect": "9 / 16"
   }
 ]

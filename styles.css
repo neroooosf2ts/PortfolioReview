@@ -5,14 +5,19 @@
     cursor: default !important;
 }
 
-html {
+body {
     zoom: 0.9;
-}
-
-html, body {
+    -moz-transform: scale(0.9);
+    -moz-transform-origin: 0 0;
     background-color: #141414;
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    background-color: #141414;
     width: 100%;
     height: 100%;
 }
@@ -45,6 +50,7 @@ nav a.nav-contact:hover {
     opacity: 1;
 }
 
+/* Contact Modal Styling */
 .contact-modal {
     display: none;
     position: fixed;
@@ -58,11 +64,6 @@ nav a.nav-contact:hover {
     align-items: center;
 }
 
-.contact-heading {
-    font-size: 10.5rem;
-    color: #ffffff;
-}
-
 .contact-modal-content {
     background-color: #1a1a1a;
     padding: 40px;
@@ -72,32 +73,50 @@ nav a.nav-contact:hover {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     animation: slideUp 0.3s ease;
+}
+
+.contact-modal-content h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
 }
 
 .contact-modal-content p {
     color: #cccccc;
-    line-height: 1.7;
+    line-height: 1.6;
     font-size: 0.95rem;
 }
 
 .contact-email {
     color: #ffffff !important;
     font-weight: 600;
-    font-size: 1rem !important;
-}
-
-.twitter-link {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    opacity: 0.8;
+    font-size: 1.05rem !important;
+    text-decoration: underline;
     transition: opacity 0.2s ease;
 }
 
-.twitter-link:hover {
+.contact-email:hover {
+    opacity: 0.8;
+}
+
+.social-links {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.social-icon {
+    color: #ffffff;
+    font-size: 1.8rem;
+    opacity: 0.8;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
     opacity: 1;
+    transform: translateY(-2px);
 }
 
 .contact-close {
@@ -139,6 +158,17 @@ section:last-of-type {
     color: #ffffff;
     padding: 40px 0 24px;
     opacity: 0.9;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 320px;
+    height: 3px;
+    margin: 14px auto 0;
+    background-color: #ffffff;
+    opacity: 0.4;
 }
 
 .media-grid {
@@ -167,12 +197,10 @@ section:last-of-type {
 .media-item::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(0, 0, 0, 0);
     transition: background 0.3s ease;
+    pointer-events: none;
 }
 
 .media-item:hover::after {
@@ -186,16 +214,25 @@ section:last-of-type {
     height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 0;
     border: none;
+    background-color: #141414;
+}
+
+.media-item video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#gameGrid .media-item,
+#personalGrid .media-item {
+    width: calc(100% / 3);
 }
 
 .media-item-label {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -203,8 +240,10 @@ section:last-of-type {
     padding: 15px;
     opacity: 0;
     transition: opacity 0.3s ease;
-    z-index: 1;
+    z-index: 2;
+    pointer-events: none;
 }
+
 .media-item:hover .media-item-label {
     opacity: 1;
 }
@@ -228,10 +267,8 @@ section:last-of-type {
     display: none;
     position: fixed;
     z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.75);
     justify-content: center;
     align-items: center;
@@ -247,7 +284,6 @@ section:last-of-type {
     cursor: pointer;
     opacity: 0.7;
     z-index: 1100;
-    transition: opacity 0.2s ease;
     line-height: 1;
 }
 
@@ -265,12 +301,15 @@ section:last-of-type {
     animation: slideUp 0.3s ease;
 }
 
+#modal-media {
+    width: 100%;
+}
+
 #modal-media video,
 #modal-media img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 0;
 }
 
 #modal-media iframe {
@@ -279,24 +318,7 @@ section:last-of-type {
     height: auto;
     display: block;
     border: none;
-    border-radius: 0;
-}
-
-#modal-media {
-    width: 100%;
-    cursor: default;
-}
-
-.modal-external-link {
-    color: #ffffff;
-    opacity: 0.85;
-    font-size: 0.9rem;
-    text-decoration: underline;
-    transition: opacity 0.2s ease;
-}
-
-.modal-external-link:hover {
-    opacity: 1;
+    background-color: #141414;
 }
 
 .modal-info {
@@ -318,16 +340,33 @@ section:last-of-type {
     font-size: 0.95rem;
 }
 
+.modal-external-link {
+    color: #ffffff;
+    opacity: 0.85;
+    font-size: 0.9rem;
+    text-decoration: underline;
+}
+
 @keyframes slideUp {
     from { transform: translateY(50px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
 @media (max-width: 768px) {
-    .media-item { width: 50%; }
+    .media-item, #gameGrid .media-item, #personalGrid .media-item { width: 50%; }
     .modal-inner { width: 95%; }
 }
 
 @media (max-width: 480px) {
-    .media-item { width: 100%; }
+    .media-item, #gameGrid .media-item, #personalGrid .media-item { width: 100%; }
+}
+
+/* Modal TikTok Vertical Sizing */
+.modal-inner.tiktok-active {
+    max-width: 380px;
+}
+
+.modal-inner.tiktok-active #modal-media iframe {
+    aspect-ratio: 9 / 16 !important;
+    max-height: 70vh;
 }
