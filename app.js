@@ -37,8 +37,9 @@ function buildSection(title, gridId, data) {
     grid.id = gridId;
     section.appendChild(grid);
 
+    const shrinkVideos = gridId === 'gameGrid';
     data.forEach((media) => {
-        grid.appendChild(createMediaItem(media));
+        grid.appendChild(createMediaItem(media, { shrinkVideo: shrinkVideos }));
     });
 
     return section;
@@ -58,9 +59,12 @@ function mediaMarkup(media, { interactive } = { interactive: false }) {
     return '';
 }
 
-function createMediaItem(media) {
+function createMediaItem(media, options = {}) {
     const item = document.createElement('div');
     item.className = 'media-item';
+    if (options.shrinkVideo && media.type === 'video') {
+        item.classList.add('video-shrink');
+    }
     item.onclick = () => openModal(media);
 
     item.innerHTML = `
