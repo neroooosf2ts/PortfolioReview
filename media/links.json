@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "title": "Example Personal Piece",
+    "type": "embed",
+    "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "duration": "Personal Project",
+    "description": "Replace this entry with your own personal work."
+  }
+]
