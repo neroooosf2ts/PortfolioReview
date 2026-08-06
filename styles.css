@@ -124,10 +124,14 @@ main {
 
 section {
     margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 section:last-of-type {
     margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 .section-title {
@@ -177,6 +181,17 @@ section:last-of-type {
 
 .media-item:hover::after {
     background: rgba(0, 0, 0, 0.5);
+}
+
+.media-item.video-shrink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media-item.video-shrink video {
+    width: 95%;
+    height: 95%;
 }
 
 .media-item img,
